@@ -58,37 +58,96 @@
 		</div>
 	</section>
 
-	<div id="myModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
-		<div class="bg-white w-full max-w-md mx-4 p-6 rounded-lg shadow-lg relative">
-			<!-- Close Button -->
-			<button onclick="document.getElementById('myModal').classList.add('hidden')"
-				class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold">
-				&times;
-			</button>
-
-			<!-- Modal Content -->
-			<h2 class="text-2xl font-semibold mb-4">Get your code here</h2>
-			<p class="mb-6 text-gray-700">
-				reach use on any of these platforms to get your coupon code, and start earning
-			</p>
-
-			<div class="max-w-sm mx-auto space-y-4">
-				<!-- Telegram Button -->
-				<a href="https://t.me/YOURUSERNAME?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
-					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
-					class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
-					Telegram Vendor
-				</a>
-
-				<!-- WhatsApp Button -->
-				<a href="https://wa.me/YOURNUMBER?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
-					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
-					class="block w-full text-center bg-[#25D366] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
-					WhatsApp Vendor
-				</a>
-			</div>
-		</div>
+	<!-- First Modal -->
+<div id="myModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+	<div class="bg-white w-full max-w-md mx-4 p-6 rounded-lg shadow-lg relative">
+	  <!-- Close Button -->
+	  <button onclick="document.getElementById('myModal').classList.add('hidden')"
+		class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold">
+		&times;
+	  </button>
+  
+	  <!-- Modal Content -->
+	  <h2 class="text-2xl font-semibold mb-4">Get your code here</h2>
+	  <p class="mb-6 text-gray-700">
+		Reach us on any of these platforms to get your coupon code, or pay directly to get started.
+	  </p>
+  
+	  <div class="max-w-sm mx-auto space-y-4">
+		<!-- Telegram Button -->
+		<a href="https://t.me/YOURUSERNAME?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+		  onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
+		  class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+		  Telegram Vendor
+		</a>
+  
+		<!-- WhatsApp Button -->
+		<a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+		  onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
+		  class="block w-full text-center bg-[#25D366] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+		  WhatsApp Vendor
+		</a>
+  
+		<!-- Pay Now Button -->
+		<button onclick="document.getElementById('myModal').classList.add('hidden'); document.getElementById('payModal').classList.remove('hidden');"
+		  class="block w-full text-center bg-[#f59e0b] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+		  Pay Now
+		</button>
+	  </div>
 	</div>
+  </div>
+  
+  <!-- Second Modal (Pay Now) -->
+<div id="payModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+	<div class="bg-white w-full max-w-lg mx-4 p-8 rounded-lg shadow-lg relative">
+  
+	  <!-- Back Arrow -->
+	  <button onclick="document.getElementById('payModal').classList.add('hidden'); document.getElementById('myModal').classList.remove('hidden');"
+		class="absolute top-2 left-2 text-gray-600 hover:text-black text-2xl font-bold">
+		&#8592;
+	  </button>
+  
+	  <!-- Close Button -->
+	  <button onclick="document.getElementById('payModal').classList.add('hidden')"
+		class="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl font-bold">
+		&times;
+	  </button>
+  
+	  <!-- Modal Content -->
+	  <h2 class="text-2xl font-semibold mb-4">Pay Now - Account Details</h2>
+	  <p class="mb-4 text-gray-700">Please make payment to the account below and send proof to our WhatsApp vendor:</p>
+  
+	  <div class="bg-gray-100 p-4 rounded-lg mb-4">
+		<p><strong>Bank Name:</strong> Example Bank</p>
+		<p><strong>Account Number:</strong> 6526478049</p>
+		<p><strong>Account Name:</strong> ESTHER BROOKS DIGITAL HUB,
+			Moniepoint MFB</p>
+	  </div>
+  
+	  <p class="mb-6 text-gray-700">
+		Once paid, send a screenshot of your payment receipt to:
+		Whatsapp or Telegram
+	  </p>
+  
+	  <div class="max-w-sm mx-auto space-y-4">
+		<!-- Telegram Button -->
+		<a href="https://t.me/YOURUSERNAME?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+		  onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
+		  class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+		  Telegram Vendor
+		</a>
+  
+		<!-- WhatsApp Button -->
+		<a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+		  onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
+		  class="block w-full text-center bg-[#25D366] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+		  WhatsApp Vendor
+		</a>
+	  </div>
+	</div>
+  </div>
+  
+  
 </body>
 
 </html>
