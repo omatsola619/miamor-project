@@ -35,7 +35,7 @@
 				<select
 					class="w-full text-xl bg-white text-black py-2 px-3 focus:outline-black h-16 focus:border-white">
 					<option>Select Plan</option>
-					<option>Basic plan - ₦9,000</option>
+					<option>Basic plan - ₦10,000</option>
 					<option>Premium plan - ₦14,000</option>
 				</select>
 
@@ -75,12 +75,12 @@
 			</p>
 
 			<div class="max-w-sm mx-auto space-y-4">
-				<!-- Telegram Button -->
-				<a href="https://t.me/YOURUSERNAME?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
-					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
-					class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
-					Telegram Vendor
-				</a>
+				<!-- Pay Now Button -->
+				<button
+					onclick="document.getElementById('myModal').classList.add('hidden'); document.getElementById('payModal').classList.remove('hidden');"
+					class="block w-full text-center bg-[#f59e0b] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+					Pay to vendor account Now
+				</button>
 
 				<!-- WhatsApp Button -->
 				<a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
@@ -89,12 +89,13 @@
 					WhatsApp Vendor
 				</a>
 
-				<!-- Pay Now Button -->
-				<button
-					onclick="document.getElementById('myModal').classList.add('hidden'); document.getElementById('payModal').classList.remove('hidden');"
-					class="block w-full text-center bg-[#f59e0b] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
-					Pay to vendor account Now
-				</button>
+				<!-- Telegram Button -->
+				<a href="https://t.me/YOURUSERNAME?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
+					class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
+					Telegram Vendor
+				</a>
+	
 			</div>
 		</div>
 	</div>
