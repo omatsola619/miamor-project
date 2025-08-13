@@ -7,8 +7,8 @@
 	<meta name="description"
 		content="At MIAMOR, we're revolutionizing the digital economy by empowering individuals to achieve financial freedom through strategic social media..">
 
-		<title>Miamor | love and earn</title>
-		<meta name="description" content="Miamor allows you to get matched and earn at the same time">
+	<title>Miamor | love and earn</title>
+	<meta name="description" content="Miamor allows you to get matched and earn at the same time">
 	<link rel="stylesheet" href="output.css" />
 </head>
 
@@ -84,11 +84,20 @@
 				</button>
 
 				<!-- WhatsApp Button -->
-				<a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+				<a href="https://wa.me/2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
 					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
 					class="block w-full text-center bg-[#25D366] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
 					WhatsApp Vendor
 				</a>
+
+				<!-- TikTok notice -->
+				<div id="tiktokHint"
+					class="hidden fixed inset-x-0 bottom-0 z-50 bg-black/90 text-white px-4 py-3 text-sm">
+					TikTok’s browser may block WhatsApp.
+					Tap the <b>•••</b> at the top right and choose
+					<b>“Open in external browser”</b>, then try again.
+					<button id="closeHint" class="ml-3 underline">Got it</button>
+				</div>
 
 				<!-- Telegram Button -->
 				<a href="https://t.me/m/yEnINh02NmQ0?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
@@ -96,7 +105,7 @@
 					class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
 					Telegram Vendor
 				</a>
-	
+
 			</div>
 		</div>
 	</div>
@@ -159,10 +168,23 @@
 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
-    feather.replace();
-  });
+			feather.replace();
+		});
 
-	  </script>
+	</script>
+
+	<script>
+		(function () {
+			const isTikTok = /tiktok/i.test(navigator.userAgent);
+			const hint = document.getElementById('tiktokHint');
+			const closeHint = document.getElementById('closeHint');
+
+			if (isTikTok && hint) {
+				hint.classList.remove('hidden');
+				closeHint.addEventListener('click', () => hint.classList.add('hidden'));
+			}
+		})();
+	</script>
 </body>
 
 </html>
