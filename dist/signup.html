@@ -7,8 +7,8 @@
 	<meta name="description"
 		content="At MIAMOR, we're revolutionizing the digital economy by empowering individuals to achieve financial freedom through strategic social media..">
 
-		<title>Miamor | love and earn</title>
-		<meta name="description" content="Miamor allows you to get matched and earn at the same time">
+	<title>Miamor | love and earn</title>
+	<meta name="description" content="Miamor allows you to get matched and earn at the same time">
 	<link rel="stylesheet" href="output.css" />
 </head>
 
@@ -84,11 +84,26 @@
 				</button>
 
 				<!-- WhatsApp Button -->
-				<a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
+				<!-- <a href="https://wa.me/+2349045751012?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
 					onclick="document.getElementById('myModal').classList.add('hidden')" target="_blank"
 					class="block w-full text-center bg-[#25D366] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
 					WhatsApp Vendor
+				</a> -->
+
+				<a id="whButton"
+					href="https://wa.me/+2349045751012?text=Hello%20Miamor%2C%20I%27m%20interested%20in%20your%20service."
+					target="_blank" rel="noopener"
+					class="inline-flex items-center justify-center rounded-xl px-4 py-3 font-medium bg-green-600 text-white">
+					Chat on WhatsApp
 				</a>
+
+				<!-- TikTok in-app browser notice (hidden by default) -->
+				<div id="tiktokHint"
+					class="hidden fixed inset-x-0 bottom-0 z-50 bg-black/90 text-white px-4 py-3 text-sm">
+					TikTok’s in-app browser may block WhatsApp. Tap the ••• at the top-right and choose
+					<strong>“Open in external browser”</strong>, then tap the button again.
+					<button id="closeHint" class="ml-3 underline">Got it</button>
+				</div>
 
 				<!-- Telegram Button -->
 				<a href="https://t.me/m/yEnINh02NmQ0?text=Hello%20Esther%20Brooks%2C%20I%20am%20here%20for%20miamor%20code"
@@ -96,7 +111,7 @@
 					class="block w-full text-center bg-[#0088cc] text-white font-bold py-4 rounded-lg hover:opacity-90 transition">
 					Telegram Vendor
 				</a>
-	
+
 			</div>
 		</div>
 	</div>
@@ -159,10 +174,71 @@
 
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
-    feather.replace();
-  });
+			feather.replace();
+		});
 
-	  </script>
+		(function () {
+			const isTikTok = /tiktok/i.test(navigator.userAgent);
+			const btn = document.getElementById('whButton');
+			const hint = document.getElementById('tiktokHint');
+			const closeHint = document.getElementById('closeHint');
+
+			// Your details (EDIT THESE)
+			const phoneIntl = '2348012345678'; // WhatsApp format: countrycode + number, no + or spaces
+			const text = encodeURIComponent("Hello Miamor, I'm interested in your service.");
+			const waUniversal = `https://wa.me/${phoneIntl}?text=${text}`;
+			const waScheme = `whatsapp://send?phone=${phoneIntl}&text=${text}`;
+			const waIntent = `intent://send/?phone=${phoneIntl}&text=${text}#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=${encodeURIComponent(waUniversal)};end;`;
+
+			if (isTikTok) {
+				// Show the “open in external browser” tip
+				hint.classList.remove('hidden');
+				closeHint.addEventListener('click', () => hint.classList.add('hidden'));
+			}
+
+			btn.addEventListener('click', function (e) {
+				// Always try universal link first (works on most browsers and can open app if allowed)
+				// Keep the normal href to wa.me so basic behavior still works without JS
+				// Then, attempt more aggressive deep links where possible
+				if (isTikTok) {
+					// Many TikTok webviews block app switching. Best UX: open the system browser.
+					// This forces a jump to the external browser where wa.me can open WhatsApp.
+					e.preventDefault();
+					window.location.href = waUniversal;
+					return;
+				}
+
+				// Non-TikTok: try to open the app via scheme/intent with graceful fallback
+				// Android Chrome understands intent:// links, iOS prefers whatsapp:// scheme.
+				const isAndroid = /Android/i.test(navigator.userAgent);
+				const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+				// Give the browser a chance to open the app; if not, fall back to wa.me
+				let fallbackTimer;
+				const fallback = () => { window.location.href = waUniversal; };
+
+				try {
+					if (isAndroid) {
+						e.preventDefault();
+						fallbackTimer = setTimeout(fallback, 800);
+						window.location.href = waIntent;
+					} else if (isiOS) {
+						// iOS: scheme first
+						e.preventDefault();
+						fallbackTimer = setTimeout(fallback, 800);
+						window.location.href = waScheme;
+					} else {
+						// Desktop/mobile others: keep default wa.me in a new tab
+						// (let the normal anchor click proceed)
+					}
+				} catch (_) {
+					clearTimeout(fallbackTimer);
+					fallback();
+				}
+			});
+		})();
+
+	</script>
 </body>
 
 </html>
