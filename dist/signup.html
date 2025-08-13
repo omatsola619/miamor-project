@@ -90,11 +90,10 @@
 					WhatsApp Vendor
 				</a>
 
-				<!-- TikTok notice -->
-				<div id="tiktokHint"
-					class="hidden fixed inset-x-0 bottom-0 z-50 bg-black/90 text-white px-4 py-3 text-sm">
-					TikTok’s browser may block WhatsApp.
-					Tap the <b>•••</b> at the top right and choose
+				<!-- Always Show Hint -->
+				<div id="whHint" class="fixed inset-x-0 bottom-0 z-50 bg-black/90 text-white px-4 py-3 text-sm">
+					Some browsers may block WhatsApp.
+					Tap the <b>•••</b> menu at the top right and choose
 					<b>“Open in external browser”</b>, then try again.
 					<button id="closeHint" class="ml-3 underline">Got it</button>
 				</div>
@@ -174,16 +173,13 @@
 	</script>
 
 	<script>
-		(function () {
-			const isTikTok = /tiktok/i.test(navigator.userAgent);
-			const hint = document.getElementById('tiktokHint');
-			const closeHint = document.getElementById('closeHint');
+		// Show hint immediately on page load
+		const hint = document.getElementById('whHint');
+		const closeBtn = document.getElementById('closeHint');
 
-			if (isTikTok && hint) {
-				hint.classList.remove('hidden');
-				closeHint.addEventListener('click', () => hint.classList.add('hidden'));
-			}
-		})();
+		closeBtn.addEventListener('click', () => {
+			hint.classList.add('hidden');
+		});
 	</script>
 </body>
 
